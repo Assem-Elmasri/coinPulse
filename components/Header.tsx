@@ -1,0 +1,37 @@
+"use client"
+
+
+
+
+import { cn } from "@/lib/utils" // cn is a
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+
+
+const Header = () => {
+    const path = usePathname(); // returns only the path .com/[path]
+  return (
+    <header>
+        <div className="main-container inner">
+            <Link href="/"  >
+                <Image src="/logo.svg"  alt = "coin pulse logo"
+                width={132} height={40} />
+            </Link>
+            <nav>
+                <Link href="/" className={cn('nav-link', {
+                    'is-active' : path === '/',
+                    'is-home' : true
+                } )} >Home</Link>
+                <p>Search modal</p>
+
+                <Link href="/coins" className={cn('nav-link', {
+                    'is-active' : path === '/coins',
+                } )}>All coins</Link>
+            </nav>
+        </div>
+    </header>
+  )
+}
+
+export default Header
